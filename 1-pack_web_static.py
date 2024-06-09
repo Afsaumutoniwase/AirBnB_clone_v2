@@ -8,6 +8,13 @@ from fabric.api import local
 from datetime import datetime
 import os
 
+# 1-pack_web_static.py
+from fabric import task
+from invoke import run
+
+@task
+def do_pack(c):
+    run("tar -cvzf web_static.tgz web_static")
 
 def do_pack():
     """Function to generate a .tgz archive from the contents of the web_static
