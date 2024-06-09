@@ -15,18 +15,15 @@ def do_pack(c):
 
     time_stamp = datetime.now().strftime("%Y%m%d%H%M%S")
     archive_path = "versions/web_static_{}.tgz".format(time_stamp)
-    
+
     # Create the versions directory if it doesn't exist
     os.makedirs("versions", exist_ok=True)
-    
+
     # Run the tar command to create the archive
     result = c.run("tar -cvzf {} web_static".format(archive_path), warn=True)
-    
+
     # Check if the archive was created successfully
     if result.ok and os.path.exists(archive_path):
         return archive_path
     else:
         return None
-
-# Run the script like this:
-# $ fab -f 1-pack_web_static.py do_pack
