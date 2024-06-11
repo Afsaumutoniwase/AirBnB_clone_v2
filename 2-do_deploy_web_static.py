@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-"""Fabric Script that distributes an archives"""
-
+"""
+Fabric script based on the file 1-pack_web_static.py that distributes an
+archive to the web server
+"""
 
 from fabric.api import put, run, env
 from os.path import exists
-env.hosts = ['54.227.179.101', '3.90.204.71']
+env.hosts = ['54.152.26.233', '54.242.255.89']
 
 
 def do_deploy(archive_path):
-    """Archives to web-servers"""
+    """distributes an archive to the web servers"""
     if exists(archive_path) is False:
         return False
     try:
